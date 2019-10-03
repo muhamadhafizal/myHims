@@ -137,7 +137,9 @@ class ChicController extends Controller
 
 	//Optimizer
 	public function optimizer()
-	{
+	{	
+		
+
 		$data = DB::table('product')
 		->join('stock', 'stock.id', '=', 'product.stock_id')	
 		->select('product.pro_name','product.pro_demand', 'product.dem_unit', 'product.price_per_kg', 'product.weight_per_qty', 'stock.stock_qty', 'stock.stock_unit')
@@ -147,6 +149,15 @@ class ChicController extends Controller
 		->join('stock','stock.id','=','cost.stock_id')
 		->select('cost_name','cost','stock_id')
 		->get();
+
+		
+
+
+
 		return view('Optimizer.optimizer')->with (compact('data','cost'));
+
+		
 	}
+
+
 }

@@ -30,7 +30,7 @@
     <div class="form-group">
       <label class="col-md-6 control-label" for="cost">Cost (RM)</label>  
       <div class="col-md-6">
-        <input id="cost" name="cost" type="number" placeholder="Cost (RM)" class="form-control input-md" required="">
+        <input id="cost" name="cost" type="number" step="0.01" placeholder="Cost (RM)" class="form-control input-md" required="">
 
       </div>
     </div>

@@ -30,7 +30,7 @@
     <div class="form-group">
       <label class="col-md-6 control-label" for="stock_qty">Stock Amount</label>  
       <div class="col-md-6">
-        <input id="stock_qty" name="stock_qty" type="number" placeholder="Stock Amount" class="form-control input-md" required="">
+        <input id="stock_qty" name="stock_qty" type="number" step="0.01" placeholder="Stock Amount" class="form-control input-md" required="">
 
       </div>
     </div>
@@ -50,7 +50,7 @@
     <div class="form-group">
       <label class="col-md-6 control-label" for="price_per_kg">Price Per Kg</label>  
       <div class="col-md-6">
-        <input id="price_per_kg" name="price_per_kg" type="number" placeholder="Price of Chicken Per Kg" class="form-control input-md" required="">
+        <input id="price_per_kg" name="price_per_kg" type="number" step="0.01" placeholder="Price of Chicken Per Kg" class="form-control input-md" required="">
 
       </div>
     </div>
@@ -59,7 +59,7 @@
     <div class="form-group">
       <label class="col-md-6 control-label" for="weight_per_qty">Weight Per Qty</label>  
       <div class="col-md-6">
-        <input id="weight_per_qty" name="weight_per_qty" type="number" placeholder="Weight of One Chicken" class="form-control input-md" required="">
+        <input id="weight_per_qty" name="weight_per_qty" type="number" step="0.01" placeholder="Weight of One Chicken" class="form-control input-md" required="">
       </div>
     </div>
 

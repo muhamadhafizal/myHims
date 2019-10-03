@@ -43,7 +43,7 @@
 		<div class="form-group">
 			<label class="col-md-6 control-label" for="pro_demand">Demand Amount</label>  
 			<div class="col-md-6">
-				<input id="pro_demand" name="pro_demand" type="number" placeholder="Demand Amount" class="form-control input-md" required="">
+				<input id="pro_demand" name="pro_demand" type="number" step="0.01" placeholder="Demand Amount" class="form-control input-md" required="">
 
 			</div>
 		</div>
@@ -62,7 +62,7 @@
 		<div class="form-group">
 			<label class="col-md-6 control-label" for="price_per_kg">Price Per Kg</label>  
 			<div class="col-md-6">
-				<input id="price_per_kg" name="price_per_kg" type="number" placeholder="Price Per Kg" class="form-control input-md" required="">
+				<input id="price_per_kg" name="price_per_kg" type="number"step="0.01" placeholder="Price Per Kg" class="form-control input-md" required="">
 
 			</div>
 
@@ -70,7 +70,7 @@
 			<div class="form-group">
 				<label class="col-md-6 control-label" for="weight_per_qty">Weight Per Quantity</label>  
 				<div class="col-md-6">
-					<input id="weight_per_qty" name="weight_per_qty" type="number" placeholder="Weight Per Quantity" class="form-control input-md" required="">
+					<input id="weight_per_qty" name="weight_per_qty" type="number" step="0.01" placeholder="Weight Per Quantity" class="form-control input-md" required="">
 
 				</div>
 			</div>

@@ -4,50 +4,51 @@
 
 
 @php
-$wholeChicDemand = 0;
-$wholeChicDemandUnit = 0;
-$wholeChicPriceKg = 0;
-$wholeChicWeightQty = 0;
+$wholeChicDemand=0;
+$wholeChicDemandUnit=0;
+$wholeChicPriceKg=0;
+$wholeChicWeightQty=0;
 
 
-$breastDemand = 0;
-$breastDemandUnit = 0;
-$breastPriceKg = 0;
-$breastWeightQty = 0; 
+$breastDemand=0;
+$breastDemandUnit=0;
+$breastPriceKg=0;
+$breastWeightQty=0;
 
-$wingDemand = 0;
-$wingDemandUnit = 0;
-$wingPriceKg = 0;
-$wingWeightQty = 0;
-
-
-$drumDemand = 0;
-$drumDemandUnit = 0;
-$drumPriceKg = 0;
-$drumWeightQty = 0;
+$wingDemand=0;
+$wingDemandUnit=0;
+$wingPriceKg=0;
+$wingWeightQty=0;
 
 
-$thighDemand = 0;
-$thighDemandUnit = 0;
-$thighPriceKg = 0;
-$thighWeightQty = 0;
+$drumDemand=0;
+$drumDemandUnit=0;
+$drumPriceKg=0;
+$drumWeightQty=0;
+
+
+$thighDemand=0;
+$thighDemandUnit=0;
+$thighPriceKg=0;
+$thighWeightQty=0;
 
 
 
-$fullDemand = 0;
-$fullDemandUnit = 0;
-$fullPriceKg = 0;
-$fullWeightQty = 0;
+$fullDemand=0;
+$fullDemandUnit=0;
+$fullPriceKg=0;
+$fullWeightQty=0;
 
 $QtyBreast = 0;
-$QtyDrum = 0;
-$QtyWholeChic=0;
-$QtyWing=0;
-$QtyFull=0;
-$QtyThigh=0;
+		$QtyDrum = 0;
+		$QtyWholeChic=0;
+		$QtyWing=0;
+		$QtyFull=0;
+        $QtyThigh=0;
 
-$stock;
-$stock_unit;
+
+$stock=0;
+$stock_unit=0;
 
 @endphp
 
@@ -232,12 +233,12 @@ $CutA->sale = $wholeChicWeightQty*$wholeChicPriceKg;
 
 $CutB = new Cut();
 $CutB->CutName = 'B';
-$CutB->sale = (2*(($wingWeightQty*$wingPriceKg)+($breastWeightQty*$breastPriceKg)+($drumWeightQty*$drumPriceKg)+($thighWeightQty*$thighPriceKg)));
+$CutB->sale = 2*(($wingWeightQty*$wingPriceKg)+($breastWeightQty*$breastPriceKg)+($drumWeightQty*$drumPriceKg)+($thighWeightQty*$thighPriceKg));
 
 
 $CutC = new Cut();
 $CutC->CutName = 'C';
-$CutC->sale=(2*(($wingWeightQty*$wingPriceKg)+($breastWeightQty*$breastPriceKg)+($fullWeightQty*$fullPriceKg)));
+$CutC->sale=2*(($wingWeightQty*$wingPriceKg)+($breastWeightQty*$breastPriceKg)+($fullWeightQty*$fullPriceKg));
 
 $CutD = new Cut();
 $CutD->CutName = 'D';
@@ -265,18 +266,41 @@ usort($Cuts, 'sort_objects_by_total');
 
 @php
 
-$numChicWing = $QtyWing/2;
-$numChicBreast = $QtyBreast/2;
-$numChicDrum = $QtyDrum/2;
-$numChicThigh = $QtyThigh/2;
-$numChicFull = $QtyFull/2;
+$numChicWing = round($QtyWing/2);
+$numChicBreast = round($QtyBreast/2);
+$numChicDrum = round($QtyDrum/2);
+$numChicThigh = round($QtyThigh/2);
+$numChicFull = round($QtyFull/2);
+
+echo("ChicWing");
+echo("<br>");
+echo("$numChicWing");
+echo("<br>");
+echo("ChicBreast");
+echo("<br>");
+echo("$numChicBreast");
+echo("<br>");
+echo("ChicDrum");
+echo("<br>");
+echo("$numChicDrum");
+echo("<br>");
+echo("ChicThigh");
+echo("<br>");
+echo("$numChicThigh");
+echo("<br>");
+echo("ChicFull");
+echo("<br>");
+echo("$numChicFull");
+echo("<br>");
+echo("<br>");
+
 
 
 
 class selectCutB
 {
 	public $name;
-	public $num;
+	public $numB;
 }
 
 class selectCutC
@@ -295,23 +319,48 @@ class selectCutD
 
 $wing = new selectCutB();
 $wing->name = 'Wing';
-$wing->num = $numChicWing;
+$wing->numB = $numChicWing;
 
 
 $breast = new selectCutB();
 $breast->name = 'Breast';
-$breast->num = $numChicBreast;
+$breast->numB = $numChicBreast;
 
 $drum = new selectCutB();
 $drum->name = 'Drum';
-$drum->num = $numChicDrum;
+$drum->numB = $numChicDrum;
 
 
 $thigh = new selectCutB();
 $thigh->name = 'Thigh';
-$thigh->num = $numChicThigh;
+$thigh->numB = $numChicThigh;
 
 $selectCutsB = array($wing, $breast, $drum, $thigh);
+
+
+function sort_objects_by_numB($a, $b) {
+if($a->numB == $b->numB){ return 0 ; }
+return ($a->numB < $b->numB) ? -1 : 1;
+}
+
+usort($selectCutsB, 'sort_objects_by_numB');
+
+
+foreach($selectCutsB as $B)
+{
+	echo("$B->name");
+	echo("<br>");
+	echo("$B->numB");
+	$leastB = $B->numB;
+	echo("<br>");
+	break;
+}
+echo("<br>");
+
+
+
+
+
 
 
 
@@ -326,7 +375,7 @@ $breast->num = $numChicBreast;
 
 $full = new selectCutC();
 $full->name = 'Full';
-$full->num = $numChicFull;
+$full->num = '$numChicFull';
 
 $selectCutsC = array($wing, $breast, $full);
 
@@ -343,16 +392,16 @@ $breast->num = $numChicBreast;
 
 $drum = new selectCutD();
 $drum->name = 'Drum';
-$drum->num = $numChicDrum;
+$drum->num = '$numChicDrum';
 
 
 $thigh = new selectCutD();
 $thigh->name = 'Thigh';
-$thigh->num = $numChicThigh;
+$thigh->num = '$numChicThigh';
 
 $full = new selectCutD();
 $full->name = 'Full';
-$full->num = $numChicFull;
+$full->num = '$numChicFull';
 
 $selectCutsD = array($wing, $breast, $drum, $thigh, $full);
 
@@ -382,15 +431,17 @@ foreach($Cuts as $Cut)
 		$opA = new optimizer();
 		$opA->cutType = 'A';
 		$opA->profit = $Cut->sale * $QtyWholeChic;
-        echo (" Cut Type :");
-		echo($opA->cutType);
-		echo "<br>";
-		echo ("Sale :");
-		echo($Cut->sale);
-		echo "<br>";
-		echo ("Profit :");
-		echo($opA->profit);
 
+		echo "<br>";
+		echo("Cut type : ");
+		echo("$opA->cutType");
+		echo "<br>";
+		echo("Sale : RM ");
+		echo("$Cut->sale");
+		echo "<br>";
+		echo("Profit A : RM ");
+		echo("$opA->profit");		
+		
 
 	}
 
@@ -398,24 +449,26 @@ foreach($Cuts as $Cut)
 	{
 		$opB = new optimizer();
 		$opB->cutType = 'B';
+		
 
-		function sort_objects_by_numB($a, $b) {
-		if($a->num == $b->num){ return 0 ; }
-		return ($a->num < $b->num) ? -1 : 1;
+
+		for($i=0;$i<1;$i++)
+		{
+			echo("Cut type : ");
+			echo("$opB->cutType");
+			echo "<br>";
+			echo("Sale : RM ");
+			$opB->sale = $Cut->sale;
+			echo($opB->sale);
+			echo "<br>";
+			echo("Profit B : RM ");
+			$profitB = $opB->sale * ($leastB+120);
+			echo("$profitB");
+
+
 		}
 
-	usort($selectCutsB, 'sort_objects_by_numB');
 
-	$limitB = $selectCutsB{0}->num;
-	echo("This is Cut B");
-	echo "<br>";
-	echo("Product : ");
-	echo($selectCutsB{0}->name);
-	echo "<br>";
-	echo("Limit : ");
-	echo($limitB);
-	echo "<br>";
-	
 
 	}
 
@@ -427,44 +480,49 @@ foreach($Cuts as $Cut)
 		function sort_objects_by_numC($a, $b) {
 		if($a->num == $b->num){ return 0 ; }
 		return ($a->num < $b->num) ? -1 : 1;
-		}
+	}
 
-		usort($selectCutsC, 'sort_objects_by_numC');
+	usort($selectCutsC, 'sort_objects_by_numC');
 
-		foreach($selectCutsC as $select)
+	foreach($selectCutsC as $select)
 	{
 		$limitC = $select->num;
 		break;
 	}
 
-    echo(" Limit C : ");
-	echo($limitC);
-	}
 
-	else if($Cut->CutName == 'D')
-	{
-		$opD = new optimizer();
-		$opD->cutType = 'D';
-
-		function sort_objects_by_numD($a, $b) {
-		if($a->num == $b->num){ return 0 ; }
-		return ($a->num < $b->num) ? -1 : 1;
-		}
-
-		usort($selectCutsD, 'sort_objects_by_numD');
-
-		foreach($selectCutsD as $select)
-	{
-		$limitD = $select->num;
-		break;
-	}
-
-	echo(" Limit D: ");
-	echo($limitD);
-
-	}
 
 }
+
+else if($Cut->CutName == 'D')
+{
+	$opD = new optimizer();
+	$opD->cutType = 'D';
+
+	function sort_objects_by_numD($a, $b) {
+	if($a->num == $b->num){ return 0 ; }
+	return ($a->num < $b->num) ? -1 : 1;
+}
+
+usort($selectCutsD, 'sort_objects_by_numD');
+
+foreach($selectCutsD as $select)
+{
+	$limitD = $select->num;
+	break;
+}
+
+
+
+
+}
+
+}
+
+
+
+
+
 
 @endphp
 
